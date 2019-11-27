@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+        <style>
+           
+            .draggable {
+                width:200px;
+                height: 180px;
+                padding: 0.5em;
+                float: left;
+                margin: 0 10px 10px 0;
+            }
+            #draggable, #draggable2 {
+                margin-bottom:20px;
+            }
+            #draggable {
+                cursor: n-resize;
+                cursor: move;
+            }
+            #draggable3 {
+                cursor: move;
+            }
+            #containment-wrapper {
+                width: 99%;
+                height:90%;
+                border:1px solid #000;
+                padding: 5px;
+            }
+            h3 {
+                clear: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Below sections are movable and can be adjusted anywhere on the screen with in the border</h3>
+            <div id="containment-wrapper">
+                <div id="screen1" class="draggable ui-widget-content">
+                    <h3>Screen 1:</h3>
+                    <p>Screen 1: content would be render here.... </p>
+                </div>
+                <div id="screen2" class="draggable ui-widget-content">
+                        <h3>Screen 2:</h3>
+                    <p>Screen 2: content would be render here.... </p>
+                </div>
+                <div id="screen3" class="draggable ui-widget-content">
+                        <h3>Screen 3:</h3>
+                    <p>Screen 3: content would be render here.... </p>
+                </div>
+                <div id="screen4" class="draggable ui-widget-content">
+                        <h3>Screen 4:</h3>
+                    <p>Screen 4: content would be render here.... </p>
+                </div>
+                <div id="screen5" class="draggable ui-widget-content">
+                        <h3>Screen 5:</h3>
+                    <p>Screen 5: content would be render here.... </p>
+                </div>
+            </div>
+            <script>
+                $(function(){
+                    var sPositions = localStorage.positions || "{}",
+                        positions = JSON.parse(sPositions);
+                    $.each(positions, function (id, pos) {
+                        $("#" + id).css(pos)
+                    })
+
+                    $("#screen1").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stop: function (event, ui) {
+                            positions[this.id] = ui.position
+                            localStorage.positions = JSON.stringify(positions)
+                        }
+                    });
+                    $("#screen2").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stop: function (event, ui) {
+                            positions[this.id] = ui.position
+                            localStorage.positions = JSON.stringify(positions)
+                        }
+                    });
+                    $("#screen3").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stop: function (event, ui) {
+                            positions[this.id] = ui.position
+                            localStorage.positions = JSON.stringify(positions)
+                        }
+                    });
+                    $("#screen4").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stop: function (event, ui) {
+                            positions[this.id] = ui.position
+                            localStorage.positions = JSON.stringify(positions)
+                        }
+                    });
+                    $("#screen5").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stop: function (event, ui) {
+                            positions[this.id] = ui.position
+                            localStorage.positions = JSON.stringify(positions)
+                        }
+                    });
+                });
+            </script>
+    </body>
+</html>
